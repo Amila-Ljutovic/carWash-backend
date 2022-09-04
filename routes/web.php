@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WashingStepController;
+use App\Http\Controllers\WashingProgramController;
 use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,11 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/', function () {
-    return 'car wash app :)';
-});
+
 
 //washing steps
 Route::middleware(['cors'])->group(function () {
+    
     Route::get('/washing-steps/all', [WashingStepController::class, 'getAll']);
     Route::post('/washing-steps/create', [WashingStepController::class, 'create']);
     Route::get('/washing-steps/{id}', [WashingStepController::class, 'getWashingStepById']);
@@ -31,6 +31,13 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/customers/{id}', [CustomerController::class, 'getCustomerById']);
     Route::put('/customers/{id}', [CustomerController::class, 'update']);
     Route::delete('/customers/{id}', [CustomerController::class, 'delete']);
+
+    Route::get('/washing-programs/{id}', [WashingProgramController::class, 'getWashingProgramById']);
+    Route::post('/washing-programs/create', [WashingProgramController::class, 'create']);
+
+    Route::get('/', function () {
+        return 'car wash app :)';
+    });
 });
 //customers
 

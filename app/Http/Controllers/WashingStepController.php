@@ -9,9 +9,9 @@ use App\Http\Requests\UpdateWashingStepRequest;
 
 class WashingStepController extends Controller
 {
-    public function getWashingStepById(WashingStep $washing_step)
+    public function getWashingStepById(WashingStep $id)
     {
-        return json_decode($washing_step);
+        return json_decode($id);
     }
 
     public function create(StoreWashingStepRequest $washing_step)
