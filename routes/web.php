@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WashingStepController;
 use App\Http\Controllers\WashingProgramController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +21,7 @@ use App\Http\Controllers\CustomerController;
 
 
 //washing steps
-Route::middleware(['cors'])->group(function () {
+//Route::middleware(['cors'])->group(function () {
     
     Route::get('/washing-steps/all', [WashingStepController::class, 'getAll']);
     Route::post('/washing-steps/create', [WashingStepController::class, 'create']);
@@ -32,13 +35,21 @@ Route::middleware(['cors'])->group(function () {
     Route::put('/customers/{id}', [CustomerController::class, 'update']);
     Route::delete('/customers/{id}', [CustomerController::class, 'delete']);
 
+    Route::get('/washing-programs/all', [WashingProgramController::class, 'getAll']);
     Route::get('/washing-programs/{id}', [WashingProgramController::class, 'getWashingProgramById']);
     Route::post('/washing-programs/create', [WashingProgramController::class, 'create']);
+    Route::put('/washing-programs/{id}', [WashingProgramController::class, 'update']);
+
+    Route::get('/transactions/all', [TransactionController::class, 'getAll']);
+    Route::get('/transactions/{id}', [TransactionController::class, 'getTransactionById']);
+    Route::post('/transactions/create', [TransactionController::class, 'create']);
+
+    Route::get('/dashboard-data', [DashboardController::class, 'data']);
 
     Route::get('/', function () {
         return 'car wash app :)';
     });
-});
+//});
 //customers
 
 

@@ -25,7 +25,6 @@ class CreateWashingProgramsTable extends Migration
             $table->foreign('washing_program_id')->references('id')->on('washing_programs')->onDelete('cascade');
             $table->foreignId('washing_step_id');
             $table->foreign('washing_step_id')->references('id')->on('washing_steps')->onDelete('cascade');
-            $table->integer('order');
             $table->timestamps();
         });
     }

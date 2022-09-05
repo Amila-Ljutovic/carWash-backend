@@ -18,9 +18,10 @@ class CustomerController extends Controller
     {
       
         $data_for_save = $request->validated();
-        $new_customer = new WashingStep();
+        $new_customer = new Customer();
         $new_customer->fill($data_for_save);
         $new_customer->save();
+        
 
         return json_decode($new_customer);
     }
@@ -50,7 +51,7 @@ class CustomerController extends Controller
     public function getAll()
     {
         $customers = Customer::get();
-
+        
         return json_decode($customers);
         
     }

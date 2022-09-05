@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateWashingProgramRequest extends FormRequest
+class StoreTransactionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class UpdateWashingProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'price' => 'numeric|required',
-            'stepsIds' => 'required|array',
+            'price' => 'required|numeric',
+            'customer_id' => 'required|exists:customers,id',
+            'washing_program_id' => 'required|exists:washing_programs,id',
+            'discount' => 'required|boolean'
         ];
     }
 }

@@ -23,8 +23,27 @@ class WashingProgramController extends Controller
         
         $new_washing_program->save();
         
-        $new_washing_program->washingSteps()->sync(array_column($request->stepsIds, 'id'));
+        $new_washing_program->washingSteps()->sync($data_for_save['stepsIds']);
         return json_decode($new_washing_program);
     }
 
+    public function getAll()
+    {
+        $washing_programs = WashingProgram::get()->load('washingSteps');
+        
+        return json_decode($washing_programs);
+        
+    }
+
+    public function update(UpdateWashingProgramRequest $request, WashingProgram $id)
+    {
+        $updated_data = $request->validated();
+
+        $id->update($updated_data);
+
+        $id->washingSteps()->sync($updated_data['stepsIds']);
+
+        return json_decode($id);
+         
+    }
 }

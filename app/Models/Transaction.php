@@ -10,9 +10,10 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'washing_program_id',
-        'price'
+        'price',
+        'discount'
     ];
 
     protected $casts = [
@@ -21,7 +22,7 @@ class Transaction extends Model
     ];
 
     public function customer() {
-        return $this->belongsTo(Customer::class, 'user_id', 'id');
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
     public function washingProgram() {
         return $this->belongsTo(WashingProgram::class, 'washing_program_id', 'id');
