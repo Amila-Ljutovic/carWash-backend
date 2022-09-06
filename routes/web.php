@@ -40,6 +40,7 @@ use App\Http\Controllers\AuthController;
     Route::get('/washing-programs/{id}', [WashingProgramController::class, 'getWashingProgramById']);
     Route::post('/washing-programs/create', [WashingProgramController::class, 'create']);
     Route::put('/washing-programs/{id}', [WashingProgramController::class, 'update']);
+    Route::delete('/washing-programs/{id}', [WashingProgramController::class, 'delete']);
 
     Route::get('/transactions/all', [TransactionController::class, 'getAll']);
     Route::get('/transactions/{id}', [TransactionController::class, 'getTransactionById']);

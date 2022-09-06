@@ -46,4 +46,11 @@ class WashingProgramController extends Controller
         return json_decode($id);
          
     }
+
+    public function delete(WashingProgram $id)
+    {
+        $id->delete();
+
+        return 'Washing program deleted.';
+    }
 }
