@@ -6,6 +6,7 @@ use App\Http\Controllers\WashingProgramController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,14 @@ use App\Http\Controllers\DashboardController;
     Route::post('/transactions/create', [TransactionController::class, 'create']);
 
     Route::get('/dashboard-data', [DashboardController::class, 'data']);
+
+    Route::post('/login', [AuthController::class, 'login']);
+
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/me', [AuthController::class, 'me']);
+     });
+    
+
 
     Route::get('/', function () {
         return 'car wash app :)';
