@@ -26,4 +26,8 @@ class AuthController extends Controller
     public function me() {
         return json_decode(auth()->user());
     }
+
+    public function logout() {
+        auth()->user()->currentAccessToken()->delete();
+    }
 }
